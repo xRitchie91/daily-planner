@@ -31,6 +31,7 @@ function colorRow(time) {
     }
 }
 
+
 /* Today */
 $("currentDay").text(today);
 
@@ -54,17 +55,26 @@ planWorkday.forEach(function (timeBlock, index) {
 });
 
 /* Save scheduled events */
-$(".saveBtn").on("click", function() {
+$(".saveBtn").on("click", function () {
     var blockID = parseInt(
         $(this)
-        .closest(".time-block")
-        .attr("id")
+            .closest(".time-block")
+            .attr("id")
     );
     var userEntry = $.trim(
         $(this)
-        .parent()
-        .siblings("textarea")
-        .val()
+            .parent()
+            .siblings("textarea")
+            .val()
     );
-   
-}
+    planWorkday[blockID].event = userEntry;
+
+    /* Local storage */
+    localStorage.setItem("workDay", JSON.stringify(planWorkday));
+
+    /* Check local storage */
+    var workEvents = JSON.parse(localStorage.getItem("workDay"));
+    if (workEvents) {
+        planWorkday = workEvents;
+    }
+});
