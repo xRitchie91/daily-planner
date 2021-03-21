@@ -24,5 +24,17 @@ function colorRow(time) {
     var planEntry = moment(now, "H A");
     if (planNow.isBefore(planEntry) === true) {
         return "future";
+    } else if (planNow.isAfter(planEntry) === true) {
+        return "past";
+    } else {
+        return "present";
     }
 }
+
+/* Today */
+$("currentDay").text(today);
+
+/* Rows */
+planWorkday.forEach(function(timeBlock, index) {
+	var timeLabel = timeBlock.time;
+	var blockColor = colorRow(timeLabel);
