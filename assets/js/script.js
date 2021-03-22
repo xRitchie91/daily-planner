@@ -1,7 +1,20 @@
 $(function () { });
 
+/* var past = past < currentTime;
+var now = currentTime;
+var future = future < currentTime; */
+
 /*flag variable*/
 var now = moment().format("H A");
+/* function backgroundColorEdit() {
+    if (now == currentTime) {
+        document.getElementsByClassName("backgroundTool").style.backgroundColor = "#ff0000";
+    } else if (now < currentTime) {
+        document.getElementsByClassName("backgroundTool").style.backgroundColor = "#d3d3d3";
+    } else {
+        document.getElementsByClassName("backgroundTool").style.backgroundColor = "#90ee90";
+    }
+} */
 
 /* Variables */
 setInterval(() => {
@@ -56,6 +69,7 @@ planWorkday.forEach(function (timeBlock, index) {
 
 /* Save scheduled events */
 $(".saveBtn").on("click", function () {
+
     var blockID = parseInt(
         $(this)
             .closest(".time-block")
