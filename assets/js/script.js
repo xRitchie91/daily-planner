@@ -1,20 +1,7 @@
 $(function () { });
 
-/* var past = past < currentTime;
-var now = currentTime;
-var future = future < currentTime; */
-
 /*flag variable*/
 var now = moment().format("H A");
-/* function backgroundColorEdit() {
-    if (now == currentTime) {
-        document.getElementsByClassName("backgroundTool").style.backgroundColor = "#ff0000";
-    } else if (now < currentTime) {
-        document.getElementsByClassName("backgroundTool").style.backgroundColor = "#d3d3d3";
-    } else {
-        document.getElementsByClassName("backgroundTool").style.backgroundColor = "#90ee90";
-    }
-} */
 
 /* Variables */
 setInterval(() => {
@@ -37,11 +24,12 @@ var planWorkday = [
 
 /* Current time and rows */
 function colorRow(time) {
-    var planNow = moment(now, "H A");
-    var planEntry = moment(now, "H A");
-    if (planNow.isBefore(planEntry) === true) {
+    var planNow = moment().hour();
+    var planEntry = parseInt(`${time[0]}${time[1]}`);
+    console.log(planEntry);
+    if (planNow < planEntry) {
         return "future";
-    } else if (planNow.isAfter(planEntry) === true) {
+    } else if (planNow > planEntry) {
         return "past";
     } else {
         return "present";
