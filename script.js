@@ -1,9 +1,13 @@
 $(function () { });
 
-/* Variables */
-var today = moment().format("dddd, MMMM Do, YYYY");
-
+/*flag variable*/
 var now = moment().format("H A");
+
+/* Variables */
+setInterval(() => {
+    var today = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+    document.querySelector("#currentDay").textContent = today
+}, 1000)
 
 /* Entries for Workday */
 var planWorkday = [
@@ -30,10 +34,6 @@ function colorRow(time) {
         return "present";
     }
 }
-
-
-/* Today */
-$("currentDay").text(today);
 
 /* Rows */
 planWorkday.forEach(function (timeBlock, index) {
